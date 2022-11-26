@@ -1,0 +1,92 @@
+##Student Data(BT 4)
+Write a program in solidity to create Student data. Use the following constructs:
+Structures, Arrays, Fallback Deploy this as smart contract on Ethereum and Observe the transaction fee and Gas values.
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity >= 0.7.0;
+
+contract Student_management{
+   //structures
+	struct Student{
+		int stud_id;
+		string Name;
+		string Department;
+	}
+    //array
+	Student[] Students;
+
+	function add_stud(int stud_id, string memory Name, string memory Department) public{
+		Student memory stud = Student(stud_id, Name, Department);
+		Students.push(stud);
+	}
+
+	function getStudent(int stud_id) public view returns(string memory, string memory){
+		for(uint i = 0; i < Students.length; i++){
+			Student memory stud = Students[i];
+			if(stud.stud_id == stud_id){
+				return(stud.Name, stud.Department);
+			}
+		}
+        return("Name Not Found", "Department Not Found");
+	}
+
+	//Fallback Function
+	fallback() external payable{
+		Students.push(Student(7, "XYZ", "Mechanical"));
+	}
+}
+
+########################
+Solidity
+Solidity is object-oriented, high-level statically-typed programing language used to create
+smart contracts. Solidity programming looks similar to Java script, but there are a lot of
+differences between both languages
+	Solidity is a high-level language. The structure of smart contracts in solidity is very similar 
+to the structure of classes in object-oriented languages. The solidity file has an extension .sol. 
+
+What are Smart Contracts?
+	Solidity’s code is encapsulated in contracts which means a contract in Solidity is a collection 
+of code (its functions) and data (its state) that resides at a specific address on the 
+Ethereum blockchain. A contract is a fundamental block of building an application on Ethereum.A smart 
+contract is a small program that runs on an Ethereum blockchain. Once the smart contract is deployed on 
+the Ethereum blockchain, it cannot be changed.  
+
+Benefits :
+-Speed,efficiency,accuracy
+-trust and transparency
+-security and saving
+
+Ethereum
+	Ethereum is a decentralized, open-source blockchain with smart contract functionality. 
+Ether is the native cryptocurrency of the platform. Among cryptocurrencies, ether is second only to 
+bitcoin in market capitalization
+
+What is an Ethereum transaction?
+	A transaction in Ethereum is a signed data message sent from one Ethereum account to another. 
+It contains the transaction sender and recipient information, the option to include the amount of 
+Ether to be transferred, the smart contract bytecode, and the transaction fee the sender is willing 
+to pay to the network validators to have the transaction included in the blockchain, known as gas price 
+and limit.
+
+Gas 
+-	Gas is a unit of account within the EVM used in the calculation of a transaction fee, which is the 
+	amount of ETH a transaction's sender must pay to the miner who includes the transaction in the blockchain.
+-	Gas is essential to the etherum network. His the fuel that allows it to operate in the Some way car 
+	need gasoline to run.
+-	Gas refers to the unit that measures the amount of computational effort required to execute Specific 
+	operations on the ethereum network.
+-	Since each etherum transaction requires computational resources to execute, each tionsortion require 
+	a fee.
+
+Transaction fee:
+-	Ethereum average transaction for measures the average fee in VSD when an ethrium transaction is proced 
+	by a minor and confirmed.
+- 	Average Etherum fees can splite cluring periods of Congestion on the network as they did during the 
+	2017 to early 2018 Crypto where they reached around 3 USD.
+		
+Conclusion:
+	Solidity is an object-oriented high-level programming language for creating a smart contract
+	that runs on the Ethereum block chain. We have learned about the smart contract and its
+	creation using solidity programming.
+	We developed Smart Contracts on and observed the transaction fee on gas values.
